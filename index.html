@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolZilla – Fastest PDF Tools ⚡ | Image to PDF, Merge & Compress</title>
+    <meta name="description" content="ToolZilla offers the fastest, 100% free online PDF tools. Convert Image to PDF, Merge PDF, and Compress PDF directly in your browser. No login required.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+    <div class="glow-bg"></div>
+    
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo" id="home-btn">
+                <span class="logo-icon">🦖</span> Tool<span>Zilla</span>
+            </a>
+            <div class="nav-links">
+                <a href="#img2pdf" class="tool-link">Image to PDF</a>
+                <a href="#merge" class="tool-link">Merge PDF</a>
+                <a href="#compress" class="tool-link">Compress PDF</a>
+                <button id="theme-toggle" class="theme-btn">🌓</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app-content">
+        <!-- Home Page -->
+        <section id="home-view" class="view active">
+            <div class="hero">
+                <h1 class="fade-in">ToolZilla – Fastest PDF Tools ⚡</h1>
+                <p class="fade-in delay-1">No login. No limits. 100% free and private.</p>
+                <div class="privacy-badge fade-in delay-2">
+                    <span>🔒 Your files never leave your device</span>
+                </div>
+            </div>
+
+            <div class="tool-grid">
+                <div class="tool-card fade-in delay-3" onclick="showView('img2pdf')">
+                    <div class="card-icon">📄</div>
+                    <h3>Image to PDF</h3>
+                    <p>Convert JPG, PNG, WebP to PDF instantly.</p>
+                    <span class="card-badge">Popular 🔥</span>
+                </div>
+                <div class="tool-card fade-in delay-4" onclick="showView('merge')">
+                    <div class="card-icon">⚡</div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDF files into one.</p>
+                </div>
+                <div class="tool-card fade-in delay-5" onclick="showView('compress')">
+                    <div class="card-icon">📥</div>
+                    <h3>Compress PDF</h3>
+                    <p>Reduce file size without losing quality.</p>
+                    <span class="card-badge">Smart ✨</span>
+                </div>
+            </div>
+
+            <div class="ad-placeholder fade-in delay-6">
+                <span>Space for non-intrusive ads / Premium features</span>
+            </div>
+        </section>
+
+        <!-- Image to PDF Tool -->
+        <section id="img2pdf-view" class="view">
+            <div class="tool-header">
+                <button class="back-btn" onclick="showView('home')">← Back</button>
+                <h2>Image to PDF Converter 📄</h2>
+            </div>
+            
+            <div class="drop-zone" id="img-drop-zone">
+                <input type="file" id="img-input" multiple accept="image/*" hidden>
+                <div class="drop-content">
+                    <div class="drop-icon">📤</div>
+                    <p>Drag & drop images here or <span>browse files</span></p>
+                    <small>Supports JPG, PNG, WebP, SVG</small>
+                </div>
+            </div>
+
+            <div id="img-preview-container" class="preview-grid hidden">
+                <!-- Preview items will be injected here -->
+            </div>
+
+            <div id="img-actions" class="actions hidden">
+                <div class="stats">
+                    <span id="img-count">0 Images</span>
+                    <span id="img-total-size">0 KB</span>
+                    <div class="mode-selector">
+                        <label><input type="radio" name="img-quality" value="1.0" checked> High Quality</label>
+                        <label><input type="radio" name="img-quality" value="0.7"> Fast Mode</label>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="clear-imgs" class="secondary-btn">Clear All</button>
+                    <button id="convert-imgs" class="primary-btn">Convert to PDF 🚀</button>
+                </div>
+            </div>
+
+            <div id="img-result" class="result-card hidden">
+                <div class="success-icon">✅</div>
+                <h3>PDF Ready!</h3>
+                <p id="img-result-info">File conversion complete.</p>
+                <button id="download-pdf-btn" class="download-btn">Download PDF 📥</button>
+            </div>
+        </main>
+
+        <!-- Merge PDF Tool -->
+        <section id="merge-view" class="view">
+             <div class="tool-header">
+                <button class="back-btn" onclick="showView('home')">← Back</button>
+                <h2>Merge PDF Files ⚡</h2>
+            </div>
+             <div class="drop-zone" id="merge-drop-zone">
+                <input type="file" id="merge-input" multiple accept=".pdf" hidden>
+                <div class="drop-content">
+                    <div class="drop-icon">🖇️</div>
+                    <p>Select PDF files to merge or <span>browse files</span></p>
+                </div>
+            </div>
+            <!-- Logic for merge preview and actions... -->
+             <div id="merge-preview-container" class="preview-grid hidden"></div>
+             <div id="merge-actions" class="actions hidden">
+                <button id="clear-merge" class="secondary-btn">Clear</button>
+                <button id="process-merge" class="primary-btn">Merge PDFs 🔗</button>
+            </div>
+             <div id="merge-result" class="result-card hidden">
+                <h3>Merged Successfully!</h3>
+                <button id="download-merged-btn" class="download-btn">Download Merged PDF 📥</button>
+            </div>
+        </section>
+
+        <!-- Compress PDF Tool -->
+        <section id="compress-view" class="view">
+             <div class="tool-header">
+                <button class="back-btn" onclick="showView('home')">← Back</button>
+                <h2>Compress PDF 📥</h2>
+            </div>
+             <div class="drop-zone" id="compress-drop-zone">
+                <input type="file" id="compress-input" accept=".pdf" hidden>
+                <div class="drop-content">
+                    <div class="drop-icon">📉</div>
+                    <p>Select a PDF to compress or <span>browse files</span></p>
+                </div>
+            </div>
+            <div id="compress-options" class="options-container hidden">
+                <h3>Select Compression Level</h3>
+                <div class="option-grid">
+                    <label class="option-card">
+                        <input type="radio" name="comp-level" value="extreme">
+                        <div class="option-info">
+                            <strong>Extreme Compression</strong>
+                            <span>Less quality, high savings</span>
+                        </div>
+                    </label>
+                    <label class="option-card active">
+                        <input type="radio" name="comp-level" value="balanced" checked>
+                        <div class="option-info">
+                            <strong>Recommended</strong>
+                            <span>Good quality, good savings</span>
+                        </div>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="comp-level" value="high">
+                        <div class="option-info">
+                            <strong>High Quality</strong>
+                            <span>Minimal compression, best quality</span>
+                        </div>
+                    </label>
+                </div>
+                <button id="process-compress" class="primary-btn">Compress PDF ⚡</button>
+            </div>
+            <div id="compress-result" class="result-card hidden">
+                <h3>Compression Complete!</h3>
+                <p id="compress-stats">Saved 40% (2.1MB → 1.2MB)</p>
+                <button id="download-compressed-btn" class="download-btn">Download Compressed PDF 📥</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ToolZilla. All rights reserved. 100% Browser-based security.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="loader-overlay" class="loader-overlay hidden">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p id="loader-message">Processing...</p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
