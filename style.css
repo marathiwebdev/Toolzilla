@@ -12,16 +12,6 @@
     --nav-bg: rgba(248, 250, 252, 0.8);
 }
 
-body.dark-mode {
-    --bg-dark: #050505;
-    --bg-card: rgba(255, 255, 255, 0.05);
-    --border-card: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: #9ca3af;
-    --glow: 0 0 20px rgba(124, 58, 237, 0.3);
-    --nav-bg: rgba(5, 5, 5, 0.8);
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -34,7 +24,6 @@ body {
     color: var(--text-primary);
     overflow-x: hidden;
     min-height: 100vh;
-    transition: background-color 0.3s ease;
 }
 
 /* 3D Glow Background */
@@ -72,9 +61,6 @@ body {
     animation: moveGlow 20s infinite alternate-reverse;
 }
 
-body.dark-mode .glow-bg::before { background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%); }
-body.dark-mode .glow-bg::after { background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); }
-
 @keyframes moveGlow {
     0% { transform: translate(0, 0); }
     100% { transform: translate(100px, 100px); }
@@ -95,7 +81,6 @@ body.dark-mode .glow-bg::after { background: radial-gradient(circle, rgba(59, 13
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--border-card);
-    transition: background-color 0.3s ease;
 }
 
 .navbar .container {
@@ -111,11 +96,21 @@ body.dark-mode .glow-bg::after { background: radial-gradient(circle, rgba(59, 13
     color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .logo span {
     color: var(--accent-purple);
+}
+
+.brand-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.brand-logo:hover {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -133,26 +128,6 @@ body.dark-mode .glow-bg::after { background: radial-gradient(circle, rgba(59, 13
 
 .tool-link:hover {
     color: var(--accent-purple);
-    text-shadow: var(--glow);
-}
-
-body.dark-mode .tool-link:hover {
-    color: #fff;
-}
-
-.theme-btn {
-    background: var(--bg-card);
-    border: 1px solid var(--border-card);
-    color: var(--text-primary);
-    border-radius: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: var(--transition);
-}
-
-.theme-btn:hover {
-    transform: rotate(15deg) scale(1.1);
 }
 
 /* Views Management */
@@ -226,7 +201,6 @@ body.dark-mode .tool-link:hover {
 
 .tool-card:hover {
     transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
-    background: var(--bg-card);
     border-color: var(--accent-purple);
     box-shadow: var(--glow);
 }
@@ -279,10 +253,6 @@ body.dark-mode .tool-link:hover {
 
 .back-btn:hover {
     background: rgba(0, 0, 0, 0.05);
-}
-
-body.dark-mode .back-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Drop Zone */
@@ -502,10 +472,6 @@ body.dark-mode .back-btn:hover {
     box-shadow: 0 20px 40px rgba(124, 58, 237, 0.05);
 }
 
-body.dark-mode .result-card {
-    background: rgba(124, 58, 237, 0.05);
-}
-
 .success-icon {
     font-size: 48px;
     margin-bottom: 20px;
@@ -571,8 +537,6 @@ body.dark-mode .result-card {
     justify-content: center;
 }
 
-body.dark-mode .loader-overlay { background: rgba(0, 0, 0, 0.9); }
-
 .loader-spinner {
     width: 60px;
     height: 60px;
@@ -582,8 +546,6 @@ body.dark-mode .loader-overlay { background: rgba(0, 0, 0, 0.9); }
     animation: spin 1s linear infinite;
     margin: 0 auto 20px;
 }
-
-body.dark-mode .loader-spinner { border: 4px solid rgba(255, 255, 255, 0.1); border-top-color: var(--accent-purple); }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

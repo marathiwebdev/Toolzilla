@@ -20,22 +20,6 @@ function showView(viewId) {
     }
 }
 
-// Theme Toggle Logic
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Check for saved theme - default is light
-const savedTheme = localStorage.getItem('toolzilla-theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark-mode');
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('toolzilla-theme', mode);
-});
-
 // Global Loader
 function toggleLoader(show, message = 'Processing...') {
     const loader = document.getElementById('loader-overlay');
