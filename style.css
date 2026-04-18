@@ -615,3 +615,115 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+/* Blog Section */
+.blog-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.blog-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    padding: 30px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glow);
+    border-color: var(--accent-purple);
+}
+
+.blog-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.blog-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.read-more {
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.read-more:hover {
+    gap: 10px;
+}
+
+/* Blog Page Styles */
+.blog-page-content {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.blog-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-post h2 {
+    font-size: 1.75rem;
+    margin: 40px 0 20px;
+}
+
+.blog-post p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.blog-post ul {
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.blog-post li {
+    margin-bottom: 10px;
+}
+
+.blog-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-card);
+    display: flex;
+    justify-content: space-between;
+}
